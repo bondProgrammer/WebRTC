@@ -3,11 +3,11 @@ In this repository I have created some sample projects which have their specific
 
 
 In order to run the following file each folder has diff application 
-Requirement :
+## Requirement :
   - Node must be installed
     To install node goto : https://nodejs.org/en/
   - Introductory knowledge of JS, HTML, WebRTC
-How to run:
+## How to run:
 1. git clone <repo_url>
 2. cd WebRTC
 3. cd <folder_name>
@@ -15,4 +15,4 @@ How to run:
 5. node server
 6. GOTO browser ' http://localhost:[PORT]'
    where,
-   PORT will be displayed on command promt of node server
+   `PORT` will be displayed on command promt of node server
