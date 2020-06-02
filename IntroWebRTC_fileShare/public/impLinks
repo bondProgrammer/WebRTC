@@ -1,0 +1,5 @@
+constraints for video :https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getSupportedConstraints
+
+
+npm install 
+node server

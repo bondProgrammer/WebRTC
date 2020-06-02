@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CareStream </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div>
+        Video : <select id="camera"></select>
+    </div>
+    <br>
+    <video id="video"></video>
+    </div>
+    <script>
+        var video = document.querySelector("video");
+
+        //add video input list to dropdown
+        var videoSelect = document.querySelector("#camera");
+        var videoSource = videoSelect.value;
+
+        navigator.mediaDevices.enumerateDevices().then(function (devices) {
+            for (var i = 0; i < devices.length; i++) {
+                var device = devices[i];
+                if (device.kind === 'videoinput') {
+                    var option = document.createElement('option');
+                    option.value = device.deviceId;
+                    option.text = device.label || 'camera ' + (i + 1);
+                    videoSelect.appendChild(option);
+                }
+            };
+        });
+        var constraint = {
+            video: {
+                width: {
+                    min: 640,
+                    max: 1280
+                },
+                height: {
+                    min: 360,
+                    max: 720
+                },
+                deviceId: [{
+                    sourceId: videoSource
+                }]
+            },
+            audio: false
+        };
+
+        startStream();
+
+        function startStream() {
+            navigator.mediaDevices.getUserMedia(constraint)
+                .then(function (stream) {
+                    console.log("success");
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(function (err) {
+                    console.log("An error occurred: " + err);
+                });
+        }
+
+    </script>
+</body>
+
+</html>
